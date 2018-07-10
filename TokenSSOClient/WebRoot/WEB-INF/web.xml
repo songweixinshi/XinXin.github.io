@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <filter>
+    <description>客户端登录方法拦截</description>
+    <filter-name>ClientLoginFilter</filter-name>
+    <filter-class>com.bettem.ClientLoginFilter</filter-class>
+    <init-param>
+      <param-name>token_soo_server_url</param-name>
+      <param-value>http://192.168.2.52:8087/TokenSSOServer</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>ClientLoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>checkTokenFilter</filter-name>
+  	<filter-class>com.bettem.CheckTokenFilter</filter-class>
+  	<init-param>
+    	<param-name>token_soo_server_verify_url</param-name>
+    	<param-value>http://192.168.2.52:8087/TokenSSOServer/verifyToken</param-value>
+    </init-param>
+  	<init-param>
+    	<param-name>token_soo_server_logout_url</param-name>
+    	<param-value>http://192.168.2.52:8087/TokenSSOServer/logout</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>checkTokenFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <servlet>
+  	<servlet-name>clientLogin</servlet-name>
+  	<servlet-class>com.bettem.ClientLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>clientLogin</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>clientLogout</servlet-name>
+  	<servlet-class>com.bettem.ClientLogout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>clientLogout</servlet-name>
+  	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+	
+	<filter>
+    	<description>服务端登录拦截</description>
+		<filter-name>serverLoginFilter</filter-name>
+		<filter-class>com.bettem.ServerLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>serverLoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>serverLogin</servlet-name>
+		<servlet-class>com.bettem.ServerLogin</servlet-class>		
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>serverLogin</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>verifyToken</servlet-name>
+		<servlet-class>com.bettem.VerifyToken</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>verifyToken</servlet-name>
+		<url-pattern>/verifyToken</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>serverLogout</servlet-name>
+		<servlet-class>com.bettem.ServerLogout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>serverLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+</web-app>
