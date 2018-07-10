@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+	<service>
+		<name>MessageService</name>
+		<serviceClass>com.xinxin.test.serverTest.MessageService</serviceClass>
+		<implementationClass>com.xinxin.test.serverTest.MessageServiceImpl</implementationClass>
+	</service>
+</beans>
